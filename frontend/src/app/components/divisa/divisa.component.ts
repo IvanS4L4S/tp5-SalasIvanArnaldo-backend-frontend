@@ -53,7 +53,6 @@ export class DivisaComponent implements OnInit {
     this.divisaService.altaDivisa(this.divisa).subscribe(
       (result)=>{
         if(result.status=="1"){
-         
           //da aviso del estado con una alerta
           Swal.fire({
            icon: 'success',
