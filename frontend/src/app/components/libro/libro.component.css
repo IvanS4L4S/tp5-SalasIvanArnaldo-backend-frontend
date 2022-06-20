@@ -1,0 +1,11 @@
+img{
+    height: 390px;
+    width: 300px;
+    display:block;
+margin:auto;
+}
+
+#t{
+    background: black;
+    opacity: 0.75;
+}

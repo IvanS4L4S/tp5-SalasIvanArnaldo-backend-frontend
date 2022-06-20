@@ -1,0 +1,79 @@
+
+aside div {
+    margin-top: 10px;
+    background: transparent;
+}
+header div{
+    font-family: fantasy;
+    font-size: 220%;
+}
+
+
+
+#tra #i{
+
+    height: 50px;
+    width: 50px;
+} 
+#boton{
+    background-color: rgb(140, 127, 255);
+    height: 35px;
+    width: 150px;
+    margin-left: 50px;
+    border: rgb(6, 7, 7) 2px solid;
+  border-radius: 20px;
+}
+#botonCon{
+    background-color: rgb(129, 127, 255);
+    
+    height: 35px;
+    width: 150px;
+    margin-top: 0%;
+    margin-left: 50px;
+    border: rgb(6, 7, 7) 2px solid;
+  border-radius: 20px;
+  margin: 20px;
+}
+#fa{
+    background-color: bisque;
+    height: 150px;
+    margin-right: 130px;
+    margin-left: 40px;
+    margin-block-end: 20px;
+}
+#b{
+    background-color: aquamarine;
+    height: 56px;
+    width: 140px;
+    padding: 0%;
+    margin-left: 0%; 
+    border: rgb(6, 7, 7) 2px solid;
+  border-radius: 20px;
+}
+#tra3{
+    background-color: rgb(246, 246, 253);
+    margin-right: 100%;
+}
+#c{
+    margin-left: 90%;
+}
+
+#ban2{
+    height: 50px;
+    width: 50px; 
+    float: left; 
+
+}
+#letra{
+    margin-left: 5px;
+    
+}
+#com{
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 200px;
+}
+#q{
+    height: 50px;
+    width: 50px;
+}
