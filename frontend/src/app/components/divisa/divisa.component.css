@@ -1,4 +1,6 @@
-
+div{
+    color: white;
+}
 aside div {
     margin-top: 10px;
     background: transparent;
