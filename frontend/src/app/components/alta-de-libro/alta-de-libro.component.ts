@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Librom } from 'src/app/models/librom';
 import { LibroService } from 'src/app/services/libro.service';
 import Swal from 'sweetalert2';
@@ -18,13 +19,13 @@ export class AltaDeLibroComponent implements OnInit {
     this.libro= new Librom();
    }
 
-   cargar(){
+   cargar(libro:NgForm){
 
     this.libro.destacado=this.destacado;
     this.libroService.altaLibro(this.libro).subscribe(
       (result)=>{
-        const resultado=result;
-        console.log(result);
+    //    const resultado=result;
+     //   console.log(result);
         if(result.status=="1"){
           
           //da aviso del estado con una alerta
@@ -37,7 +38,9 @@ export class AltaDeLibroComponent implements OnInit {
             imageHeight: 300,
             imageAlt: 'Custom image',
           });
+
         }
+        libro.reset();
       },
       error=>{
         if(error.status=="0"){

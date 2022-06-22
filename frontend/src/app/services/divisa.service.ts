@@ -17,7 +17,7 @@ export class DivisaService {
       headers: new HttpHeaders({
       'content-type': 'application/x-www-form-urlencoded',
       'X-RapidAPI-Host': 'community-neutrino-currency-conversion.p.rapidapi.com',
-      'X-RapidAPI-Key': ''//'2c5907e80dmshbb0bb57c63c069ep15782djsnc2fb48875b31'//'f00e4aeac8msh702478c3972c46ep1f4a49jsn2a0af2d1553b' 
+      'X-RapidAPI-Key': 'f00e4aeac8msh702478c3972c46ep1f4a49jsn2a0af2d1553b'//'2c5907e80dmshbb0bb57c63c069ep15782djsnc2fb48875b31'//'f00e4aeac8msh702478c3972c46ep1f4a49jsn2a0af2d1553b' 
       }),
       }
 

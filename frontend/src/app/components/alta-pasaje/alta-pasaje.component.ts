@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pasaje } from 'src/app/models/pasaje';
 
-//import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Persona } from 'src/app/models/persona';
 import { PasajeService } from 'src/app/services/pasaje.service';
@@ -36,7 +36,7 @@ export class AltaPasajeComponent implements OnInit {
     private activatedRoute: ActivatedRoute
    ) { 
 
-   this.mostrasTodosLosPasajes();
+ //  this.mostrasTodosLosPasajes();
  
   }
 
@@ -46,23 +46,42 @@ export class AltaPasajeComponent implements OnInit {
       if (params['id'] == "0"){
         this.accion = "new";
         this.cargarPersonas();
-        this.iniciarPasaje();
+        this.iniciarPasaje();///
       }else{
         this.accion = "update";
-        this.cargarPersonas();
+    //    this.cargarPersonas();
       this.cargarPasaje(params['id']);
       }
     });
   }
 
-  cargarPasaje(id:string){
+ async cargarPasaje(id:string){
+
     this.pasaje=new Pasaje();
     
     this.pasajeService.getPasajeA(id).subscribe(
       result=>{
        Object.assign(this.pasaje,result);
-       this.pasaje.pasajero=this.personas.find((item)=>(item._id==this.pasaje.pasajero._id))!;
-        console.log(result);
+       console.log(result);
+       //carga de persona
+       this.pasajeService.getPersonas().subscribe(
+        result=>{
+          this.personas = new Array<Persona>();
+    
+          result.forEach((element:any) => {
+            this.persona=new Persona();
+            Object.assign(this.persona,element);
+           this.personas.push(this.persona);       
+          });
+          this.pasaje.pasajero=this.personas.find((item)=>(item._id==this.pasaje.pasajero._id))!; 
+          console.log(result);
+        },
+        error=>{
+            console.log("error")
+        } 
+      );
+       //
+       this.pasaje.pasajero=this.personas.find((item)=>(item._id==this.pasaje.pasajero._id))!; 
       },
       error=>{
           console.log("error")
@@ -70,9 +89,7 @@ export class AltaPasajeComponent implements OnInit {
       );
 
   }
-  iniciarPasaje(){
-    this.pasaje=new Pasaje();
-  }
+ 
 
 
 
@@ -94,8 +111,9 @@ cargarPersonas(){
     } 
   );
 }
-guardarPasajero(){
 
+
+guardarPasajero(pasaje:NgForm){
   this.pasaje.precioPasaje=this.precioPasaje;
   console.log(this.pasaje.precioPasaje)
   this.pasajeService.altaPasaje(this.pasaje).subscribe(
@@ -107,8 +125,9 @@ guardarPasajero(){
           title: result.msg,
           showConfirmButton: false,
           timer: 1500
-        });  
-    this.mostrasTodosLosPasajes();;
+        });
+        pasaje.reset();  
+ //   this.mostrasTodosLosPasajes();
       }
     },
     error=>{
@@ -137,7 +156,7 @@ cambiarPrecio(){
   }
 }
 
-actualizarPasajero(){
+actualizarPasajero(pasaje:NgForm){
   this.pasajeService.actualizarPasaje(this.pasaje).subscribe(
     result=>{
       if(result.status=="1"){
@@ -148,7 +167,7 @@ actualizarPasajero(){
           showConfirmButton: false,
           timer: 1500
          });
-       // this.recuperarPasajes();
+         pasaje.reset(); 
       }
     },
     error=>{
@@ -160,6 +179,11 @@ actualizarPasajero(){
   );
 
 }
+
+
+
+
+
 
 mostrasTodosLosPasajes(){
   this.pasajes= new Array<Pasaje>();
@@ -177,6 +201,10 @@ mostrasTodosLosPasajes(){
         console.log("error")
     } 
   );
+}
+
+iniciarPasaje(){
+  this.pasaje=new Pasaje();
 }
 
 volver(){

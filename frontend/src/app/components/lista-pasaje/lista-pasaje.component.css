@@ -1,0 +1,8 @@
+#TamañoSelec select{
+    width : 400px; 
+    height : auto;
+}
+#TamañoSelec select{
+    margin-left: auto; 
+    margin-right: auto ;
+}

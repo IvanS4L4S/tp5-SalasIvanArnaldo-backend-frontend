@@ -1,43 +1,70 @@
 <div class="container">
+    <form #divisaForm="ngForm">
+        <button type="button" class="btn btn-dark" (click)="recuperarTodo()">RECUPERAR TODOS</button><br>
+        <div id="opcEmail">
+            <input placeholder="ingrese el email" [(ngModel)]="email" name="email"> 
+            <button type="button" class="btn btn-dark" (click)="recuperarFiltro(divisaForm)">RECUPERAR POR FILTRO</button>
+        </div>
 
-    <button type="button" class="btn btn-dark" (click)="recuperarTodo()">RECUPERAR TODOS</button><br>
-<div>
-    <input placeholder="ingrese el email" [(ngModel)]="email" name="email">
-    <button type="button" class="btn btn-dark" (click)="recuperarFiltro()">RECUPERAR POR FILTRO</button>
-</div>
+        <div id="opcMonedas">
+       <!--    <input placeholder="ingrese Moneda Origen" [(ngModel)]="origen" name="origen">-->
+            <select placeholder="ingrese Moneda Origen" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="origen" name="origen">
+                <option value="ARS">ARS</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPN">JPN</option>
+                <option value="CNY">CNY</option>
+                <option value="AUD">AUD</option>
+                <option value="BTC">BTC</option>
+                <option value="USD">USD</option> 
+              </select>
 
-<div>
-    <input placeholder="ingrese Moneda Origen" [(ngModel)]="origen" name="origen">
-    <input placeholder="ingrese Moneda Destino" [(ngModel)]="destino" name="destino">
-    <button type="button" class="btn btn-dark" (click)="recuperarFiltroMoneda()">RECUPERAR POR FILTRO</button>
-</div>
-<br>
+              
+                <select placeholder="ingrese Moneda Origen" class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="destino" name="destino">
+                    <option value="ARS">ARS</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPN">JPN</option>
+                    <option value="CNY">CNY</option>
+                    <option value="AUD">AUD</option>
+                    <option value="BTC">BTC</option>
+                    <option value="USD">USD</option> 
+                  </select> 
+              
+             
+            <button type="button" class="btn btn-dark" (click)="recuperarFiltroMoneda(divisaForm)">RECUPERAR POR FILTRO</button>
+        </div>
+        <br>
 
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th style="width: 10%">Id</th>
-            <th style="width: 10%">monedaOrigen:</th>
-            <th style="width: 10%">cantidadOrigen</th>
-            <th style="width: 10%">monedaDestino</th>
-            <th style="width: 10%">cantidadDestino</th>
-            <th style="width: 10%">emailCliente</th>
-     <!--      <th style="width: 10%">tasaConversion</th> --> 
-            
-        </tr>
-        </thead>
-    <tbody>
-        <tr *ngFor="let item of divisas">
-        
-        <td>{{item._id}}</td>
-        <td>{{item.monedaOrigen }}</td>
-        <td >{{item.cantidadOrigen | currency: 'USD' | lowercase}}</td>
-        <td>{{item.monedaDestino}}</td>
-        <td>{{item.cantidadDestino | currency: 'USD' | lowercase}}</td>
-        <td>{{item.emailCliente}}</td>
-   <!--     <td>{{item.tasaConversion | currency: 'USD' | lowercase}}</td> -->
-    </tr>
- </tbody>
-</table>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10%">Id</th>
+                    <th style="width: 10%">monedaOrigen:</th>
+                    <th style="width: 10%">cantidadOrigen</th>
+                    <th style="width: 10%">monedaDestino</th>
+                    <th style="width: 10%">cantidadDestino</th>
+                    <th style="width: 10%">emailCliente</th>
+            <!--      <th style="width: 10%">tasaConversion</th> --> 
+                    
+                </tr>
+                </thead>
+            <tbody>
+                <tr *ngFor="let item of divisas">
+                
+                <td>{{item._id}}</td>
+                <td>{{item.monedaOrigen }}</td>
+                <td >{{item.cantidadOrigen | currency: 'USD' | lowercase}}</td>
+                <td>{{item.monedaDestino}}</td>
+                <td>{{item.cantidadDestino | currency: 'USD' | lowercase}}</td>
+                <td>{{item.emailCliente}}</td>
+        <!--     <td>{{item.tasaConversion | currency: 'USD' | lowercase}}</td> -->
+            </tr>
+        </tbody>
+        </table>
+
+
+    </form>
+
 
 </div>

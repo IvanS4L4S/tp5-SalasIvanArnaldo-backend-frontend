@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { convertToParamMap } from '@angular/router';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { convertToParamMap, Router } from '@angular/router';
 import { Divisa } from 'src/app/models/divisa';
 import { DivisaService } from 'src/app/services/divisa.service';
 import Swal from 'sweetalert2';
@@ -17,7 +18,8 @@ export class DivisaComponent implements OnInit {
   to_type!:string;
 
   divisa!:Divisa;
-  constructor(private divisaService:DivisaService) {
+  constructor(private divisaService:DivisaService,
+    private router: Router) {
     this.divisa=new Divisa();
    }
 
@@ -28,8 +30,11 @@ export class DivisaComponent implements OnInit {
         this.valor=result.result;
         console.log("donde valor="+this.from_value+" donde tipo="+this.from_type+" tipo="+this.to_type);
         console.log(this.valor + "valor");
-
+         
         this.cargarDivisa();
+      
+        
+        
       },
       error=>{
         Swal.fire({
@@ -59,7 +64,11 @@ export class DivisaComponent implements OnInit {
            title: result.msg,
            showConfirmButton: false,
            timer: 1500
+
           });
+          console.log()
+          this.llamarListaDivisa();
+          
         }
       },
       error=>{
@@ -73,4 +82,7 @@ export class DivisaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  llamarListaDivisa(){
+    this.router.navigate(['lista divisa', 0])
+  }
 }

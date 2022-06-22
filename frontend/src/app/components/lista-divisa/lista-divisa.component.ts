@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Divisa } from 'src/app/models/divisa';
 import { DivisaService } from 'src/app/services/divisa.service';
 
@@ -13,7 +15,8 @@ export class ListaDivisaComponent implements OnInit {
   destino!:string;
   divisa!:Divisa;
   divisas!:Array<Divisa>;
-  constructor(private divisaService:DivisaService) { 
+  constructor(private divisaService:DivisaService,
+    private router: Router) { 
   }
 
   recuperarTodo(){
@@ -34,7 +37,7 @@ export class ListaDivisaComponent implements OnInit {
     );
   }
 
-  recuperarFiltro(){
+  recuperarFiltro(divisa:NgForm){
     this.divisaService.getTransaccionesPorParametros(this.email).subscribe(
       result=>{
         this.divisas= new Array<Divisa>();
@@ -45,6 +48,7 @@ export class ListaDivisaComponent implements OnInit {
           this.divisas.push(this.divisa);       
         });
         console.log(result);
+        divisa.reset();
       },
       error=>{
           console.log("error")
@@ -53,7 +57,7 @@ export class ListaDivisaComponent implements OnInit {
     
   }
 
-  recuperarFiltroMoneda(){
+  recuperarFiltroMoneda(divisa:NgForm){
     this.divisaService.getTransaccionesPorMonedas(this.origen,this.destino).subscribe(
       result=>{
         this.divisas= new Array<Divisa>();
@@ -64,6 +68,7 @@ export class ListaDivisaComponent implements OnInit {
           this.divisas.push(this.divisa);       
         });
         console.log(result);
+        divisa.reset();
       },
       error=>{
           console.log("error")
@@ -74,5 +79,8 @@ export class ListaDivisaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
 
 }

@@ -1,57 +1,68 @@
  <div class="container">
-  <form #libroForm="ngForm">
-    <div >
-        <label for="staticEmail" class="col-sm-2 col-form-label" >Título:</label>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form #libroForm="ngForm">
         <div >
-            <input type="text"  class="form-control"  required maxlength="110" minlength="2" id="titulo" [(ngModel)]="libro.titulo" name="titulo"   #name="ngModel">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)"
-              class="alert alert-danger">
-              error complete el campo TITULO
+            <label for="staticEmail" class="col-sm-2 col-form-label" >Título:</label>
+            <div >
+                <input type="text"  class="form-control"  required maxlength="110" minlength="2" id="titulo" [(ngModel)]="libro.titulo" name="titulo"   #name="ngModel">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                  class="alert alert-danger">
+                  error complete el campo TITULO
+                </div>
             </div>
-        </div>
-
-    </div>    
-      <div >
-        <label for="inputPassword" class="col-sm-2 col-form-label">Descripción:</label>
-        <div >
-          <textarea type="text" class="form-control" required  minlength="2" id="inputDescripcion" [(ngModel)]="libro.descripcion" name="descripcion" #descri="ngModel"></textarea>
-      <!--    <input type="text" class="form-control" required maxlength="880" minlength="2" id="inputDescripcion" [(ngModel)]="descripcion" name="descripcion" #descri="ngModel">-->
-          <div *ngIf="descri.invalid && (descri.dirty || descri.touched)"
-          class="alert alert-danger">
-          error complete el campo de DESCRIPCIÓN
-        </div>
-        </div>
-      </div>
-      <div >
-        <label for="inputPassword" class="col-sm-2 col-form-label">Imagen:</label>
-        <div >
-          <input type="text" class="form-control" required maxlength="500" minlength="2" id="inputImagen" [(ngModel)]="libro.imagen" name="imagen" #img="ngModel">
-          <div *ngIf="img.invalid && (img.dirty || img.touched)"
-          class="alert alert-danger">
-          error complete el campo de Imagen
-        </div>
-        </div>
-      </div>
-      <div >
-        <label for="inputPassword" class="col-sm-2 col-form-label">Stock:</label>
-        <div >
-          <input type="number" class="form-control" required maxlength="300" minlength="2" id="inputStock" [(ngModel)]="libro.stock" name="stock" #stk="ngModel">
-          <div *ngIf="stk.invalid && (stk.dirty || stk.touched)"
-          class="alert alert-danger">
-          error complete el campo de STOCK
-        </div>
-        </div>
-      </div>
-
-
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [checked]="destacado" (change)="destacado = !destacado" name="destacado">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Destacado</label>
-      </div>
+    
+        </div>    
+          <div >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Descripción:</label>
+            <div >
+              <textarea type="text" class="form-control" required  minlength="2" id="inputDescripcion" [(ngModel)]="libro.descripcion" name="descripcion" #descri="ngModel"></textarea>
+          <!--    <input type="text" class="form-control" required maxlength="880" minlength="2" id="inputDescripcion" [(ngModel)]="descripcion" name="descripcion" #descri="ngModel">-->
+              <div *ngIf="descri.invalid && (descri.dirty || descri.touched)"
+              class="alert alert-danger">
+              error complete el campo de DESCRIPCIÓN
+            </div>
+            </div>
+          </div>
+          <div >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Imagen:</label>
+            <div >
+              <input type="text" class="form-control" required maxlength="500" minlength="2" id="inputImagen" [(ngModel)]="libro.imagen" name="imagen" #img="ngModel">
+              <div *ngIf="img.invalid && (img.dirty || img.touched)"
+              class="alert alert-danger">
+              error complete el campo de Imagen
+            </div>
+            </div>
+          </div>
+          <div >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Stock:</label>
+            <div >
+              <input type="number" class="form-control" required maxlength="300" minlength="2" id="inputStock" [(ngModel)]="libro.stock" name="stock" #stk="ngModel">
+              <div *ngIf="stk.invalid && (stk.dirty || stk.touched)"
+              class="alert alert-danger">
+              error complete el campo de STOCK
+            </div>
+            </div>
+          </div>
+    
+    
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [checked]="destacado" (change)="destacado = !destacado" name="destacado">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Destacado</label>
+          </div>
+         
+          <button [disabled]="!libroForm.form.valid" type="button" class="btn btn-dark" (click)="cargar(libroForm)">Guardar</button>
+    </form>
+    
+     </div>
      
-      <button [disabled]="!libroForm.form.valid" type="button" class="btn btn-dark" (click)="cargar()">Guardar</button>
-</form>
+    
+    
 
- </div>
+
+    </div>
+  </div>
+
+
+
  
-

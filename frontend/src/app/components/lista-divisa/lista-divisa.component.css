@@ -1,0 +1,26 @@
+button{
+    margin: 10px;
+}
+#opcEmail{
+    margin: 10px;
+}
+#opcEmail input{
+    width : 280px; 
+    height : auto;
+    margin: 1px;
+}
+#opcEmail button{
+    margin: 10px;
+}
+select{
+    width : 100px;
+     height : auto;
+     float: left;
+     margin: 10px;
+  }
+#opcMonedas{
+    margin: 1px;
+}
+#opcMonedas button{
+    margin: 8px;
+}

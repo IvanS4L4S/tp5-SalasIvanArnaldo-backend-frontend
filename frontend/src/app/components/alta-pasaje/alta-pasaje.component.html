@@ -4,93 +4,104 @@
   </svg></button> 
 </div>
 
-<div class="container ">
 
-  <form #pasajeForm="ngForm" >
-    <div >
-        <label for="staticEmail" class="col-sm-2 col-form-label" >Precio Pasaje:</label>
-        <div >
-            <input type="number" class="form-control"  disabled  id="precioPasaje" value={{precioPasaje}} [(ngModel)]="pasaje.precioPasaje" name="precioPasaje" >
-            {{pasaje.precioPasaje}}
-            
-            <!-- <div *ngIf="pasaj.invalid && (pasaj.dirty || pasaj.touched)"
-                class="alert alert-danger">
-                error complete el campo PASAJE
-          </div> -->
-        </div>
-    </div>    
-      <div >
-        <label for="inputPassword" class="col-sm-2 col-form-label">Categoria Pasajero:</label>
-        <div >
-  <!--     <input type="text" class="form-control" required maxlength="30" minlength="2" id="inputcategoriaPasajero" [(ngModel)]="pasaje.categoriaPasajero" name="categoriaPasajero" >
-     -->    
-           <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" required maxlength="30" minlength="2" id="inputcategoriaPasajero" [(ngModel)]="pasaje.categoriaPasajero" name="categoriaPasajero"  (change)="cambiarPrecio()">
-          <option value="menor" >Menor</option>
-          <option value="adulto">Adulto</option>
-          <option value="jubilado">Jubilado</option>
-          </select>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="container ">
 
-        </div>
-      </div>
-      <div >
-        <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Compra:</label>
+      <form #pasajeForm="ngForm" >
         <div >
-          <input   class="form-control" required maxlength="30" minlength="2" id="inputfechaCompra" [(ngModel)]="pasaje.fechaCompra" name="fechaCompra" #fecha="ngModel">
-          <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)"
-          class="alert alert-danger">
-          error complete el campo de FECHA
-        </div>
-        </div>
-      </div>
-      <div >
-        <label for="idPersona" >Persona</label>
-         
-          <select class="form-control"  required maxlength="30" minlength="2" id="idPersona" required [(ngModel)]="pasaje.pasajero" name="pasajero" #categ="ngModel">
-            <option *ngFor="let per of personas" [ngValue]="per" >{{per.apellido}},{{per.nombre}}</option>
-          </select>
-          <div *ngIf="categ.invalid && (categ.dirty || categ.touched)"
-          class="alert alert-danger">
-          error complete el campo PASAJERO
-        </div>
-          
-      </div><br>
+            <label for="staticEmail" class="col-sm-2 col-form-label" >Precio Pasaje:</label>
+            <div >
+                <input type="number" class="form-control"  disabled  id="precioPasaje" value={{precioPasaje}} [(ngModel)]="pasaje.precioPasaje" name="precioPasaje" >
+                {{pasaje.precioPasaje}}
 
-     <div style="text-align:center ; margin: 50px; ">
+            </div>
+        </div>    
+          <div >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Categoria Pasajero:</label>
+            <div >
+     
+               <select class="form-control form-select-lg mb-3" aria-label=".form-select-lg example" required maxlength="30" minlength="2" id="inputcategoriaPasajero" [(ngModel)]="pasaje.categoriaPasajero" name="categoriaPasajero"  (change)="cambiarPrecio()">
+              <option value="menor" >Menor</option>
+              <option value="adulto">Adulto</option>
+              <option value="jubilado">Jubilado</option>
+              </select>
     
-      <button  *ngIf="accion=='new'" type="button" class="btn btn-secondary" (click)="guardarPasajero()">Guardar</button>
-      <button  *ngIf="accion=='update'" type="button" class="btn btn-secondary"  (click)="actualizarPasajero()">actualizar</button>
-     </div>  
-  </form>
-  
-  
-  <br>
-  
-  
-  <table class="table table-dark table-striped">
-  
-    <thead>
-        <tr>
-            <th style="width: 10%">Id</th>
-            <th style="width: 10%">Precio-Pasaje</th>
-            <th style="width: 10%">Categoria-Pasajero</th>
-            <th style="width: 10%">Fecha-Compra</th>
-            <th style="width: 10%">Pasajero</th>
+            </div>
+          </div>
+          <div >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Fecha de Compra:</label>
+            <div >
+              <input   class="form-control" required maxlength="30" minlength="2" id="inputfechaCompra" [(ngModel)]="pasaje.fechaCompra" name="fechaCompra" #fecha="ngModel">
+              <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)"
+              class="alert alert-danger">
+              error complete el campo de FECHA
+            </div>
+            </div>
+          </div>
+          <div >
+            <label for="idPersona" >Persona</label>
+             
+              <select class="form-control"  required maxlength="30" minlength="2" id="idPersona" required [(ngModel)]="pasaje.pasajero" name="pasajero" #categ="ngModel">
+                <option *ngFor="let per of personas" [ngValue]="per" >{{per.apellido}},{{per.nombre}}</option>
+              </select>
+              <div *ngIf="categ.invalid && (categ.dirty || categ.touched)"
+              class="alert alert-danger">
+              error complete el campo PASAJERO
+            </div>
+              
+          </div><br>
+    
+         <div style="text-align:center ; margin: 50px; ">
+        
+          <button  [disabled]="!pasajeForm.form.valid" *ngIf="accion=='new'" type="button" class="btn btn-secondary" (click)="guardarPasajero(pasajeForm)">Guardar</button>
+          <button  *ngIf="accion=='update'" type="button" class="btn btn-secondary"  (click)="actualizarPasajero(pasajeForm)">actualizar</button>
+         </div>  
+      </form>
+      
+      
+      <br>
+      
+
+
+
+      <!--
+      
+      <table class="table table-dark table-striped">
+      
+        <thead>
+            <tr>
+                <th style="width: 10%">Id</th>
+                <th style="width: 10%">Precio-Pasaje</th>
+                <th style="width: 10%">Categoria-Pasajero</th>
+                <th style="width: 10%">Fecha-Compra</th>
+                <th style="width: 10%">Pasajero</th>
+                
+      
+                
+            </tr>
+            </thead>
+        <tbody>
+            <tr *ngFor="let item of pasajes">
             
-  
+            <td>{{item._id}}</td>
+            <td>{{item.precioPasaje| currency: 'USD' | lowercase}}</td>
+            <td >{{item.categoriaPasajero}}</td>
+            <td>{{item.fechaCompra }}</td> 
+            <td><b>Apellido y Nombre: </b>{{item.pasajero.apellido}},{{item.pasajero.nombre}}<br><b>Dni: </b> {{item.pasajero.nro_documento}}</td>
+            
             
         </tr>
-        </thead>
-    <tbody>
-        <tr *ngFor="let item of pasajes">
-        
-        <td>{{item._id}}</td>
-        <td>{{item.precioPasaje| currency: 'USD' | lowercase}}</td>
-        <td >{{item.categoriaPasajero}}</td>
-        <td>{{item.fechaCompra }}</td>
-        <td><b>Apellido y Nombre: </b>{{item.pasajero.apellido}},{{item.pasajero.nombre}}<br><b>Dni: </b> {{item.pasajero.nro_documento}}</td><!--{{item.pasajero.nombre}}-->
-        
-        
-    </tr>
-  </tbody>
-  </table>
-</div>
+      </tbody>
+      </table>
+     -->
+    </div>
+    
+
+  </div>
+</div> 
+
+
+
+
